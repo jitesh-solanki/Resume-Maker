@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useResumeStore } from '../../store/rootStore'
 import { getTemplateFields } from '../../features/templates/data/templateRegistry'
+import { SortableSectionList } from '../ui/SortableSectionList'
 
 // Available sections configuration
 const AVAILABLE_SECTIONS = [
@@ -32,7 +33,7 @@ export function DynamicForm() {
     removeExperience, 
     addSkill, 
     removeSkill,
-    // ===== PROJECTS - ADDED! =====
+    // ===== PROJECTS =====
     addProject,
     updateProject,
     removeProject,
@@ -160,7 +161,7 @@ export function DynamicForm() {
     }
   }
 
-  // ===== PROJECTS - FIXED =====
+  // ===== PROJECTS =====
   const handleAddProject = () => {
     console.log('Adding project...')
     addProject({ name: '', description: '', link: '' })
@@ -302,40 +303,42 @@ export function DynamicForm() {
         </span>
       </div>
 
-      {/* Section Manager */}
+      {/* Section Manager with Drag & Drop */}
       {showSectionManager && (
         <div className="bg-gray-50 rounded-lg p-4 mb-6 border border-gray-200">
-          <h3 className="text-sm font-semibold text-gray-700 mb-3">Customize Resume Sections</h3>
-          <p className="text-xs text-gray-500 mb-3">Toggle sections on/off and drag to reorder</p>
+          <h3 className="text-sm font-semibold text-gray-700 mb-2">Customize Resume Sections</h3>
+          <p className="text-xs text-gray-500 mb-3">
+            🔄 Drag the ☰ handle to reorder sections • Click ✓/× to toggle
+          </p>
           
-          <div className="space-y-2">
-            {AVAILABLE_SECTIONS.map((section) => {
-              const isEnabled = sections?.[section.id]?.enabled !== false
-              return (
-                <div key={section.id} className="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm">
-                  <button
-                    onClick={() => toggleSection(section.id)}
-                    className={`w-8 h-8 rounded-lg flex items-center justify-center transition ${
-                      isEnabled 
-                        ? 'bg-blue-500 text-white hover:bg-blue-600' 
-                        : 'bg-gray-200 text-gray-400 hover:bg-gray-300'
-                    }`}
-                  >
-                    {isEnabled ? '✓' : '×'}
-                  </button>
-                  <span className="text-sm font-medium flex-1">
-                    {section.icon} {section.label}
-                  </span>
-                  <span className="text-xs text-gray-400">
-                    {isEnabled ? 'Enabled' : 'Disabled'}
-                  </span>
-                </div>
-              )
-            })}
-          </div>
+          <SortableSectionList
+            items={AVAILABLE_SECTIONS.map(section => ({
+              id: section.id,
+              label: section.label,
+              icon: section.icon,
+              enabled: sections?.[section.id]?.enabled !== false
+            }))}
+            onReorder={(newOrder) => {
+              const orderMap = {}
+              newOrder.forEach((item, index) => {
+                orderMap[item.id] = index
+              })
+              // Update section order in store
+              const newSections = { ...sections }
+              Object.keys(newSections).forEach(key => {
+                if (orderMap[key] !== undefined) {
+                  newSections[key] = { ...newSections[key], order: orderMap[key] }
+                }
+              })
+              // Call updateSectionOrder with the new order
+              updateSectionOrder(newOrder.map(item => item.id))
+            }}
+            onToggle={toggleSection}
+          />
           
-          <div className="mt-3 text-xs text-gray-400">
-            💡 Sections you enable will appear in your resume preview
+          <div className="mt-3 text-xs text-gray-400 flex items-center justify-between">
+            <span>💡 Sections you enable will appear in your resume preview</span>
+            <span className="text-blue-500">{getEnabledSections().length} sections enabled</span>
           </div>
         </div>
       )}

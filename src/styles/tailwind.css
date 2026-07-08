@@ -1,1 +1,157 @@
 @import "tailwindcss";
+
+/* Dark mode base styles */
+@layer base {
+  /* Default light mode */
+  :root {
+    color-scheme: light;
+  }
+
+  /* Dark mode */
+  .dark {
+    color-scheme: dark;
+  }
+
+  html {
+    @apply bg-white text-gray-900;
+  }
+
+  .dark html {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
+
+/* Dark mode utility overrides */
+@layer components {
+  /* Card */
+  .dark .bg-white {
+    background-color: #1f2937 !important;
+  }
+
+  .dark .bg-gray-50 {
+    background-color: #111827 !important;
+  }
+
+  .dark .bg-gray-100 {
+    background-color: #1f2937 !important;
+  }
+
+  /* Text */
+  .dark .text-gray-800,
+  .dark .text-gray-900 {
+    color: #f9fafb !important;
+  }
+
+  .dark .text-gray-700 {
+    color: #d1d5db !important;
+  }
+
+  .dark .text-gray-600 {
+    color: #9ca3af !important;
+  }
+
+  .dark .text-gray-500 {
+    color: #6b7280 !important;
+  }
+
+  /* Borders */
+  .dark .border-gray-200,
+  .dark .border-gray-300 {
+    border-color: #374151 !important;
+  }
+
+  /* Shadows */
+  .dark .shadow,
+  .dark .shadow-md,
+  .dark .shadow-lg,
+  .dark .shadow-xl {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Inputs */
+  .dark input,
+  .dark textarea,
+  .dark select {
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+    color: #f9fafb !important;
+  }
+
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    color: #9ca3af !important;
+  }
+
+  /* Links */
+  .dark a {
+    color: #60a5fa !important;
+  }
+
+  .dark a:hover {
+    color: #93c5fd !important;
+  }
+
+  /* Buttons */
+  .dark .bg-blue-600 {
+    background-color: #2563eb !important;
+  }
+
+  .dark .bg-blue-600:hover {
+    background-color: #1d4ed8 !important;
+  }
+
+  .dark .bg-green-600 {
+    background-color: #059669 !important;
+  }
+
+  .dark .bg-green-600:hover {
+    background-color: #047857 !important;
+  }
+
+  .dark .bg-purple-600 {
+    background-color: #7c3aed !important;
+  }
+
+  .dark .bg-purple-600:hover {
+    background-color: #6d28d9 !important;
+  }
+
+  .dark .bg-gray-600 {
+    background-color: #4b5563 !important;
+  }
+
+  .dark .bg-gray-600:hover {
+    background-color: #374151 !important;
+  }
+
+  .dark .bg-gray-200 {
+    background-color: #374151 !important;
+    color: #d1d5db !important;
+  }
+
+  .dark .bg-gray-100 {
+    background-color: #1f2937 !important;
+    color: #d1d5db !important;
+  }
+  /* Force navbar colors */
+nav.bg-white {
+  background-color: #ffffff !important;
+}
+
+.dark nav.bg-white {
+  background-color: #111827 !important;
+}
+
+/* Force mobile menu background */
+.dark .md\\:hidden .bg-white {
+  background-color: #1f2937 !important;
+}
+}
