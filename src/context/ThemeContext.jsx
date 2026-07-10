@@ -3,7 +3,6 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
-  // Get saved theme or default to 'light'
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme')
     return saved || 'light'
@@ -12,20 +11,19 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     const root = document.documentElement
     
-    // Remove both classes
+    // Remove all theme classes
     root.classList.remove('light', 'dark')
-    // Add current theme
-    root.classList.add(theme)
-    
-    // Also handle body
     document.body.classList.remove('light', 'dark')
+    
+    // Add the current theme
+    root.classList.add(theme)
     document.body.classList.add(theme)
     
-    // Save
     localStorage.setItem('theme', theme)
     
-    console.log('🌓 Theme changed to:', theme) // Debug
-    console.log('📋 HTML classes:', root.className) // Debug
+    console.log('🌓 Theme changed to:', theme)
+    console.log('📋 HTML classes:', root.className)
+    console.log('📋 Body classes:', document.body.className)
   }, [theme])
 
   const toggleTheme = () => {

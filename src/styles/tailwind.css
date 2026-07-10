@@ -13,25 +13,29 @@
   }
 
   html {
-    @apply bg-white text-gray-900;
+    background-color: #ffffff;
+    color: #111827;
   }
 
   .dark html {
-    @apply bg-gray-900 text-gray-100;
+    background-color: #111827;
+    color: #f9fafb;
   }
 
   body {
-    @apply bg-gray-50 text-gray-900;
+    background-color: #f9fafb;
+    color: #111827;
   }
 
   .dark body {
-    @apply bg-gray-900 text-gray-100;
+    background-color: #111827;
+    color: #f9fafb;
   }
 }
 
 /* Dark mode utility overrides */
 @layer components {
-  /* Card */
+  /* Cards & Backgrounds */
   .dark .bg-white {
     background-color: #1f2937 !important;
   }
@@ -44,7 +48,11 @@
     background-color: #1f2937 !important;
   }
 
-  /* Text */
+  .dark .bg-gray-200 {
+    background-color: #374151 !important;
+  }
+
+  /* Text Colors */
   .dark .text-gray-800,
   .dark .text-gray-900 {
     color: #f9fafb !important;
@@ -62,9 +70,21 @@
     color: #6b7280 !important;
   }
 
+  .dark .text-gray-400 {
+    color: #4b5563 !important;
+  }
+
+  .dark .text-white {
+    color: #f9fafb !important;
+  }
+
   /* Borders */
   .dark .border-gray-200,
   .dark .border-gray-300 {
+    border-color: #374151 !important;
+  }
+
+  .dark .border-white {
     border-color: #374151 !important;
   }
 
@@ -132,26 +152,185 @@
     background-color: #374151 !important;
   }
 
+  .dark .bg-gray-100 {
+    background-color: #1f2937 !important;
+  }
+
   .dark .bg-gray-200 {
+    background-color: #374151 !important;
+  }
+
+  /* Navbar - Force colors */
+  nav.bg-white {
+    background-color: #ffffff !important;
+  }
+
+  .dark nav.bg-white {
+    background-color: #111827 !important;
+  }
+
+  /* Navbar text colors */
+  nav .text-gray-600 {
+    color: #4b5563 !important;
+  }
+
+  .dark nav .text-gray-600 {
+    color: #9ca3af !important;
+  }
+
+  nav .text-gray-800 {
+    color: #1f2937 !important;
+  }
+
+  .dark nav .text-gray-800 {
+    color: #f9fafb !important;
+  }
+
+  /* Mobile menu */
+  .dark .md\\:hidden .bg-white {
+    background-color: #1f2937 !important;
+  }
+
+  .dark .md\\:hidden .border-t {
+    border-color: #374151 !important;
+  }
+
+  /* Modal */
+  .dark .bg-black\\/50 {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+  }
+
+  /* Template cards */
+  .dark .bg-white.rounded-xl {
+    background-color: #1f2937 !important;
+  }
+
+  .dark .bg-gray-100 {
     background-color: #374151 !important;
     color: #d1d5db !important;
   }
 
-  .dark .bg-gray-100 {
-    background-color: #1f2937 !important;
+  .dark .text-gray-700 {
     color: #d1d5db !important;
   }
-  /* Force navbar colors */
+
+  /* Home page features */
+  .dark .bg-white\\/20 {
+    background-color: rgba(31, 41, 55, 0.6) !important;
+  }
+
+  .dark .border-white\\/30 {
+    border-color: rgba(55, 65, 81, 0.5) !important;
+  }
+}
+
+/* Force dark mode on all pages */
+.dark .min-h-screen {
+  background-color: #111827 !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #111827 !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #1f2937 !important;
+}
+
+/* Scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937 !important;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563 !important;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280 !important;
+}
+/* ===== NAVBAR FIX - OVERRIDE DARK MODE ===== */
+
+/* Force navbar to be white in light mode */
 nav.bg-white {
   background-color: #ffffff !important;
 }
 
+/* Force navbar text to be dark in light mode */
+nav .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+nav .text-gray-700 {
+  color: #374151 !important;
+}
+
+nav .text-gray-800 {
+  color: #1f2937 !important;
+}
+
+/* Force navbar hover to be light blue in light mode */
+nav .hover\:bg-blue-50:hover {
+  background-color: #eff6ff !important;
+}
+
+/* Force Get Started button in light mode */
+nav .bg-blue-600 {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+nav .bg-blue-600:hover {
+  background-color: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* Login button in light mode */
+nav .text-gray-700 {
+  color: #374151 !important;
+}
+
+nav .hover\:text-blue-600:hover {
+  color: #2563eb !important;
+}
+
+/* ===== DARK MODE OVERRIDES FOR NAVBAR ===== */
 .dark nav.bg-white {
   background-color: #111827 !important;
 }
 
-/* Force mobile menu background */
-.dark .md\\:hidden .bg-white {
+.dark nav .text-gray-600,
+.dark nav .text-gray-700,
+.dark nav .text-gray-800 {
+  color: #d1d5db !important;
+}
+
+.dark nav .hover\:bg-blue-50:hover {
+  background-color: rgba(31, 41, 55, 0.8) !important;
+}
+
+.dark nav .bg-blue-600 {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+.dark nav .bg-blue-600:hover {
+  background-color: #1d4ed8 !important;
+}
+
+.dark nav .hover\:text-blue-600:hover {
+  color: #60a5fa !important;
+}
+
+/* ===== MOBILE MENU FIX ===== */
+.md\:hidden .bg-white {
+  background-color: #ffffff !important;
+}
+
+.dark .md\:hidden .bg-white {
   background-color: #1f2937 !important;
 }
+
+.dark .md\:hidden .border-t {
+  border-color: #374151 !important;
 }

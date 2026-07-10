@@ -20,7 +20,7 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 text-xl font-bold text-blue-600 dark:text-blue-400">
+          <Link to="/" className="flex items-center gap-2 text-xl font-bold text-blue-600 dark:text-blue-400 hover:scale-105 transition-transform">
             <span className="text-2xl">📄</span>
             <span className="hidden sm:inline">Resume Maker</span>
           </Link>
@@ -31,10 +31,10 @@ export function Navbar() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center gap-1 px-3 py-2 rounded-lg transition ${
+                className={`flex items-center gap-1 px-3 py-2 rounded-lg transition-all duration-200 ${
                   isActive(item.path)
-                    ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-800 dark:hover:text-white'
+                    ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-white hover:scale-105'
                 }`}
               >
                 <span>{item.icon}</span>
@@ -50,13 +50,13 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               to="/login"
-              className="hidden sm:inline-block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white transition"
+              className="hidden sm:inline-block px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white hover:scale-105 transition-all"
             >
               Login
             </Link>
             <Link
               to="/builder"
-              className="hidden sm:inline-block bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition"
+              className="hidden sm:inline-block bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium px-5 py-2.5 rounded-lg hover:scale-105 transition-all shadow-md hover:shadow-lg"
             >
               Get Started
             </Link>
@@ -69,7 +69,7 @@ export function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
             >
               <span className="text-2xl dark:text-white">{isMenuOpen ? '✕' : '☰'}</span>
             </button>
@@ -78,7 +78,7 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t dark:border-gray-700 bg-white dark:bg-gray-900">
+          <div className="md:hidden py-4 border-t dark:border-gray-700 bg-white dark:bg-gray-900 rounded-b-lg shadow-lg">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -87,7 +87,7 @@ export function Navbar() {
                 className={`flex items-center gap-2 px-4 py-3 rounded-lg transition ${
                   isActive(item.path)
                     ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-white'
                 }`}
               >
                 <span>{item.icon}</span>
@@ -98,7 +98,7 @@ export function Navbar() {
               <Link
                 to="/login"
                 onClick={() => setIsMenuOpen(false)}
-                className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg"
+                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-white rounded-lg"
               >
                 Login
               </Link>

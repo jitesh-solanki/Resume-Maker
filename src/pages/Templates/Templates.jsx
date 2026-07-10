@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useResumeStore } from '../../store/rootStore'
-import { getAllTemplates, getTemplateFields } from '../../features/templates/data/templateRegistry'
+import { getAllTemplates } from '../../features/templates/data/templateRegistry'
 
 export function Templates() {
   const { selectedTemplate, setSelectedTemplate, loadSampleDataForTemplate } = useResumeStore()
@@ -21,11 +21,8 @@ export function Templates() {
   }
 
   const handlePreviewWithSample = (templateId) => {
-    // Load sample data for this template
     loadSampleDataForTemplate(templateId)
-    // Set the template
     setSelectedTemplate(templateId)
-    // Navigate to preview page
     window.location.href = '/preview'
   }
 
@@ -61,12 +58,10 @@ export function Templates() {
           {templates.map((template) => (
             <div
               key={template.id}
-              className={`bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-105 cursor-pointer ${
-                selectedTemplate === template.id ? 'ring-4 ring-blue-500 shadow-xl' : ''
-              }`}
+              className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
             >
-              <div className="h-32 bg-gradient-to-br from-gray-500 to-gray-700 flex items-center justify-center">
-                <span className="text-5xl">{template.previewImage || '📄'}</span>
+              <div className="h-32 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                <span className="text-5xl drop-shadow-lg">{template.previewImage || '📄'}</span>
               </div>
               <div className="p-5">
                 <h3 className="text-lg font-bold text-gray-800 mb-1">{template.name}</h3>
@@ -74,9 +69,9 @@ export function Templates() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleTemplateClick(template.id)}
-                    className={`flex-1 py-2 rounded-lg font-semibold transition ${
+                    className={`flex-1 py-2 rounded-lg font-semibold transition-all duration-200 ${
                       selectedTemplate === template.id
-                        ? 'bg-blue-600 text-white'
+                        ? 'bg-blue-600 text-white hover:bg-blue-700'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -84,7 +79,7 @@ export function Templates() {
                   </button>
                   <button
                     onClick={() => handlePreviewWithSample(template.id)}
-                    className="px-3 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition text-sm"
+                    className="px-3 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-all duration-200 text-sm"
                     title="Preview with sample data"
                   >
                     👁️ Preview
@@ -106,7 +101,7 @@ export function Templates() {
           <div className="text-center mt-10">
             <button
               onClick={() => window.location.href = '/builder'}
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Continue to Builder →
             </button>
@@ -116,8 +111,8 @@ export function Templates() {
 
       {/* Confirmation Modal */}
       {showConfirm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 p-6">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 p-6">
             <div className="text-center mb-4">
               <div className="text-5xl mb-3">⚠️</div>
               <h3 className="text-xl font-bold text-gray-800">Change Template?</h3>
