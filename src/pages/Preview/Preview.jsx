@@ -120,22 +120,22 @@ export function Preview() {
         {/* Header with actions */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">Resume Preview</h1>
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Resume Preview</h1>
             {template && (
-              <p className="text-sm text-gray-500 mt-1">
-                Template: <span className="font-semibold text-blue-600">{template.name}</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                Template: <span className="font-semibold text-blue-600 dark:text-blue-400">{template.name}</span>
               </p>
             )}
             {resume.personal?.fullName && (
-              <p className="text-sm text-gray-400 mt-1">
-                Resume for: <span className="font-medium">{resume.personal.fullName}</span>
+              <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">
+                Resume for: <span className="font-medium dark:text-gray-300">{resume.personal.fullName}</span>
               </p>
             )}
           </div>
           <div className="space-x-4 flex items-center">
             <Link
               to="/builder"
-              className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+              className="px-6 py-2 bg-gray-200 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition"
             >
               ✏️ Edit
             </Link>
@@ -177,7 +177,7 @@ export function Preview() {
             <button
               onClick={handlePrint}
               disabled={isPrinting}
-              className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center gap-2"
+              className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 dark:hover:bg-gray-500 transition disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center gap-2"
             >
               {isPrinting ? (
                 <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

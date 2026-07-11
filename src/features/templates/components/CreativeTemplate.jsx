@@ -37,7 +37,8 @@ export function CreativeTemplate({ enabledSections = [] }) {
             fontSize: '46px',
             fontWeight: '800',
             margin: '0 0 5px 0',
-            letterSpacing: '-1px'
+            letterSpacing: '-1px',
+            color: 'white'
           }}>
             {resume.personal?.fullName}
           </h1>
@@ -45,7 +46,8 @@ export function CreativeTemplate({ enabledSections = [] }) {
             fontSize: '20px',
             fontWeight: '600',
             margin: '0 0 12px 0',
-            opacity: '0.95'
+            opacity: '0.95',
+            color: 'white'
           }}>
             {resume.personal?.title || 'Creative Professional'}
           </p>
@@ -54,7 +56,8 @@ export function CreativeTemplate({ enabledSections = [] }) {
             flexWrap: 'wrap',
             gap: '16px',
             fontSize: '14px',
-            opacity: '0.9'
+            opacity: '0.9',
+            color: 'white'
           }}>
             {resume.personal?.phone && <span>📞 {resume.personal.phone}</span>}
             {resume.personal?.email && <span>✉️ {resume.personal.email}</span>}
@@ -77,7 +80,7 @@ export function CreativeTemplate({ enabledSections = [] }) {
           <p style={{
             fontSize: '15px',
             lineHeight: '1.8',
-            color: '#333',
+            color: '#1a1a1a',
             margin: 0,
             paddingLeft: '15px',
             borderLeft: '4px solid #F59E0B'
@@ -106,16 +109,16 @@ export function CreativeTemplate({ enabledSections = [] }) {
               borderRadius: '8px'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: '700', margin: 0 }}>
+                <h3 style={{ fontSize: '16px', fontWeight: '700', margin: 0, color: '#1a1a1a' }}>
                   {edu.institution}
                 </h3>
-                <span style={{ fontSize: '13px', color: '#666' }}>{edu.year}</span>
+                <span style={{ fontSize: '13px', color: '#4a4a4a' }}>{edu.year}</span>
               </div>
-              <p style={{ fontSize: '14px', fontWeight: '600', margin: '4px 0' }}>
+              <p style={{ fontSize: '14px', fontWeight: '600', margin: '4px 0', color: '#1a1a1a' }}>
                 {edu.degree}
               </p>
               {edu.description && (
-                <p style={{ fontSize: '13px', color: '#555', margin: 0 }}>
+                <p style={{ fontSize: '13px', color: '#4a4a4a', margin: 0 }}>
                   {edu.description}
                 </p>
               )}
@@ -143,18 +146,18 @@ export function CreativeTemplate({ enabledSections = [] }) {
               borderRadius: '8px'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: '700', margin: 0 }}>
+                <h3 style={{ fontSize: '16px', fontWeight: '700', margin: 0, color: '#1a1a1a' }}>
                   {exp.title}
                 </h3>
-                <span style={{ fontSize: '13px', color: '#666' }}>
+                <span style={{ fontSize: '13px', color: '#4a4a4a' }}>
                   {exp.startDate} - {exp.current ? 'Present' : exp.endDate}
                 </span>
               </div>
-              <p style={{ fontSize: '14px', fontWeight: '600', margin: '4px 0', color: '#444' }}>
+              <p style={{ fontSize: '14px', fontWeight: '600', margin: '4px 0', color: '#1a1a1a' }}>
                 {exp.company}
               </p>
               {exp.description && (
-                <p style={{ fontSize: '13px', color: '#555', margin: 0 }}>
+                <p style={{ fontSize: '13px', color: '#4a4a4a', margin: 0 }}>
                   {exp.description}
                 </p>
               )}
@@ -209,10 +212,10 @@ export function CreativeTemplate({ enabledSections = [] }) {
               backgroundColor: '#ECFDF5',
               borderRadius: '8px'
             }}>
-              <h3 style={{ fontSize: '15px', fontWeight: '700', margin: 0 }}>
+              <h3 style={{ fontSize: '15px', fontWeight: '700', margin: 0, color: '#1a1a1a' }}>
                 {project.name}
               </h3>
-              <p style={{ fontSize: '13px', color: '#555', margin: '4px 0 0 0' }}>
+              <p style={{ fontSize: '13px', color: '#4a4a4a', margin: '4px 0 0 0' }}>
                 {project.description}
               </p>
               {project.link && project.link !== '#' && (
@@ -248,10 +251,10 @@ export function CreativeTemplate({ enabledSections = [] }) {
               marginBottom: '8px'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '14px', fontWeight: '600' }}>{cert.name}</span>
-                <span style={{ fontSize: '12px', color: '#666' }}>{cert.year}</span>
+                <span style={{ fontSize: '14px', fontWeight: '600', color: '#1a1a1a' }}>{cert.name}</span>
+                <span style={{ fontSize: '12px', color: '#4a4a4a' }}>{cert.year}</span>
               </div>
-              <p style={{ fontSize: '13px', color: '#555', margin: '2px 0 0 0' }}>
+              <p style={{ fontSize: '13px', color: '#4a4a4a', margin: '2px 0 0 0' }}>
                 {cert.issuer}
               </p>
             </div>
@@ -278,10 +281,10 @@ export function CreativeTemplate({ enabledSections = [] }) {
               marginBottom: '8px'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '14px', fontWeight: '600' }}>{achievement.title}</span>
-                <span style={{ fontSize: '12px', color: '#666' }}>{achievement.year}</span>
+                <span style={{ fontSize: '14px', fontWeight: '600', color: '#1a1a1a' }}>{achievement.title}</span>
+                <span style={{ fontSize: '12px', color: '#4a4a4a' }}>{achievement.year}</span>
               </div>
-              <p style={{ fontSize: '13px', color: '#555', margin: '2px 0 0 0' }}>
+              <p style={{ fontSize: '13px', color: '#4a4a4a', margin: '2px 0 0 0' }}>
                 {achievement.description}
               </p>
             </div>
@@ -308,8 +311,8 @@ export function CreativeTemplate({ enabledSections = [] }) {
               marginBottom: '6px'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '14px', fontWeight: '600' }}>{lang.name}</span>
-                <span style={{ fontSize: '12px', color: '#666' }}>{lang.proficiency}</span>
+                <span style={{ fontSize: '14px', fontWeight: '600', color: '#1a1a1a' }}>{lang.name}</span>
+                <span style={{ fontSize: '12px', color: '#4a4a4a' }}>{lang.proficiency}</span>
               </div>
             </div>
           ))}
